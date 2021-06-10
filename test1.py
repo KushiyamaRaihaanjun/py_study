@@ -162,7 +162,7 @@ class Element():
         print(self.name, self.symbol, self.number)
 
     def __str__(self):
-        return (self.name, self.symbol, self.number)
+        return ('name=%s, symbol=%s,number=%s' % self.name, self.symbol, self.number)
 
 
 # 6-pr4,5
