@@ -153,27 +153,95 @@ print(letters.letters)
 
 
 class Element():
-    def __init__(self, name, symbol, number):
-        self.name = name
-        self.symbol = symbol
-        self.number = number
+    def __init__(self, __name, __symbol, __number):
+        self.name = __name
+        self.symbol = __symbol
+        self.number = __number
 
+    def name(self):
+        return self.__name
+
+    def symbol(self):
+        return self.__symbol
+
+    def number(self):
+        return self.__number
+
+    '''
     def dump(self):
         print(self.name, self.symbol, self.number)
 
+    # 6-pr7
     def __str__(self):
-        return ('name=%s, symbol=%s,number=%s' % self.name, self.symbol, self.number)
+        return ('name=%s, symbol=%s,number=%s' % (self.name, self.symbol, self.number))
+    '''
 
+
+'''
+#6-pr8
+class Bear():
+    def eats(self):
+        return 'berries'
+
+
+class Rabbit():
+    def eats(self):
+        return 'clover'
+
+
+class Octothorope():
+    def eats(self):
+        return 'campers'
+'''
 
 # 6-pr4,5
 obj = Element('Hydrogen', 'H', '1')
 
-dict_element = {'name': 'Hydrogen', 'symbol': 'H', 'number': '1'}
+#dict_element = {'name': 'Hydrogen', 'symbol': 'H', 'number': '1'}
 
-obj2 = Element(**dict_element)
+#obj2 = Element(**dict_element)
 
-print(obj2.name, obj2.symbol, obj2.number)
+print(obj.name)
 
-obj.dump()
+'''
+#6-pr9
+obj1 = Bear()
+obj2 = Rabbit()
+obj3 = Octothorope()
 
-print(obj)
+print(obj1.eats())
+print(obj2.eats())
+print(obj3.eats())
+'''
+
+# 6-pr10
+
+
+class Laser():
+    def does():
+        return 'distintegrate'
+
+
+class Claw():
+    def does():
+        return 'crush'
+
+
+class Smartphone():
+    def does():
+        return 'ring'
+
+
+class Robot():
+    def __init__(self, laser, claw, smartphone):
+        self.laser = laser
+        self.claw = claw
+        self.smartphone = smartphone
+
+    def does(self):
+        print('Laser:', self.laser, 'claw', self.claw,
+              'Smartphone', self.smartphone)
+
+
+rb = Robot(Laser.does(), Claw.does(), Smartphone.does())
+rb.does()
