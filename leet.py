@@ -214,18 +214,18 @@ print(ans_obj.majorityElement([3, 2, 3]))
 '''
 
 # 17.x
-
-
+# 計算量でアウト
+'''
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         if(len(nums) == 1):
             return nums[0]
         sums = [0]*(len(nums)+1)
         sum = 0
-        sums[0] = nums[0]
+        sums[0] = 0
         for i in range(len(nums)):
-            sums[i] = sums[i-1] + nums[i]
-        ans = -1
+            sums[i+1] = sums[i] + nums[i]
+        ans = -100000000000000000000
         for i in range(len(sums)):
             for j in range(i+1, len(sums)):
                 ans = max(sums[j]-sums[i], ans)
@@ -234,3 +234,96 @@ class Solution:
 
 ans_obj = Solution()
 print(ans_obj.maxSubArray([5, 4, -1, 7, 8]))
+'''
+# 18正解
+
+'''
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        temp = 0
+        max_num = max(nums)
+        for i in range(len(nums)):
+            temp += nums[i]
+            if temp >= 0:
+                max_num = max(max_num, temp)
+            else:
+                temp = 0
+        return max_num
+# Runtime: 60 ms, faster than 93.50% of Python3 online submissions for Maximum Subarray.
+# Memory Usage: 14.5 MB, less than 5.69% of Python3 online submissions for Maximum Subarray.
+'''
+# 19
+
+# 正解
+'''
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        prices_cp = prices.copy()
+        prices_cp.sort(reverse=True)
+        ans = -1
+        if(prices_cp == prices):
+            return 0
+        else:
+            minimum = 1000000
+            ans = -1
+            for price in prices:
+                now = price
+                if(now-minimum > 0):
+                    ans = max(ans, now-minimum)
+                minimum = min(minimum, price)
+        return ans
+'''
+# 20(mid)
+# 21
+
+'''
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        num_dict = {}
+        for num in range(len(nums)+1):
+            num_dict[num] = 0
+        for num in nums:
+            num_dict[num] += 1
+        ans_list = []
+        for key in num_dict.keys():
+            if(num_dict[key] == 0 and key > 0):
+                ans_list.append(key)
+        return ans_list
+'''
+# Definition for singly-linked list.
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+'''
+#イテレートできない
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        node_dict = {}
+        for h in head:
+            node_dict[h.val] = 0
+        for h in head:
+            node_dict[h.val] += 1
+            if(node_dict[h.next] == 1):
+                return True
+        return False
+'''
+
+'''
+#答え
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        hashmap = {}
+        while(head != None):
+            if(head in hashmap):
+                return True
+            hashmap[head] = head
+            head = head.next
+        return False
+'''
+
+# 22
