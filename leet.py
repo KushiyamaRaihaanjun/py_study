@@ -138,7 +138,7 @@ class Solution:
 #         self.left = left
 #         self.right = right
 
-
+'''
 class Solution:
     def mergeTrees(self, root1: TreeNode, root2: TreeNode) -> TreeNode:
         if not root1 and not root2:
@@ -152,6 +152,7 @@ class Solution:
             ans.left = self.mergeTrees(root1.left, root2.left)
             ans.right = self.mergeTrees(root1.right, root2.right)
             return ans
+'''
 # 13*
 # 14
 
@@ -326,4 +327,82 @@ class Solution:
         return False
 '''
 
-# 22
+# 23
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+# 23...x
+'''
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        ans = []
+        def dfs(self, node, ans):    
+            if(node):
+                if(node.right):
+                    self.dfs(node.right)
+                if(node.left):
+                    self.dfs(node.left)
+                ans.append(node.val)
+        dfs(self,root,ans)
+        return ans
+        
+ans_obj = Solution()
+nodes = TreeNode([2,1,3])
+print(ans_obj.invertTree(nodes))
+'''
+# 解答
+'''
+class Solution:
+    def invertTree(self,root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        right =self.invertTree(root.right)
+        left = self.invertTree(root.left)
+        root.left = right
+        root.right = left
+        return root
+'''
+#24 x
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+#解答
+'''
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        temp = ans = Listnode(0)
+        while(l1 or l2):
+            if(l1 and l2):
+                if(l1.val < l2.val):
+                    ans.next = l1
+                    l1 = l1.next
+                else:
+                    ans.next = l2
+                    l2 = l2.next
+            elif l1:
+                ans.next = l1
+                l1 = l1.next
+            elif l2:
+                ans.next = l2
+                l2 = l2.next
+            ans = ans.next
+        return temp.next
+'''
+# 25
+'''
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a = []
+        a[0] = 1
+        a[1] = 2
+        for i in range(2,n):
+            a[i] = a[i-1] + a[i-2]
+        return a[n-1]
+'''
+
+#26
