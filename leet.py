@@ -126,8 +126,8 @@ class Solution:
         return ans
 
 
-#ans_obj = Solution()
-#print(ans_obj.kidsWithCandies(candies=[12, 1, 12], extraCandies=10))
+# ans_obj = Solution()
+# print(ans_obj.kidsWithCandies(candies=[12, 1, 12], extraCandies=10))
 '''
 # 11*
 # 12*
@@ -175,7 +175,7 @@ print(obj_ans.singleNumber(nums=[4, 4, 2]))
 '''
 
 '''
-# o15 
+# o15
 
 
 class Solution:
@@ -186,10 +186,10 @@ class Solution:
         s = s.reverse()
 
 
-#obj_ans = Solution()
-#ans_str = ["h", "e", "l", "l", "o"]
-#obj_ans.reverseString(ans_str)
-#print(ans_str)
+# obj_ans = Solution()
+# ans_str = ["h", "e", "l", "l", "o"]
+# obj_ans.reverseString(ans_str)
+# print(ans_str)
 '''
 # 16.o
 
@@ -301,7 +301,7 @@ class ListNode:
 
 
 '''
-#イテレートできない
+# イテレートできない
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         node_dict = {}
@@ -315,7 +315,7 @@ class Solution:
 '''
 
 '''
-#答え
+# 答え
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         hashmap = {}
@@ -339,7 +339,7 @@ class Solution:
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         ans = []
-        def dfs(self, node, ans):    
+        def dfs(self, node, ans):
             if(node):
                 if(node.right):
                     self.dfs(node.right)
@@ -348,7 +348,7 @@ class Solution:
                 ans.append(node.val)
         dfs(self,root,ans)
         return ans
-        
+
 ans_obj = Solution()
 nodes = TreeNode([2,1,3])
 print(ans_obj.invertTree(nodes))
@@ -365,13 +365,13 @@ class Solution:
         root.right = left
         return root
 '''
-#24 x
+# 24 x
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-#解答
+# 解答
 '''
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
@@ -405,4 +405,89 @@ class Solution:
         return a[n-1]
 '''
 
-#26
+# 26
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# 問題文がよくわからなかった
+'''
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        l = []
+
+        def inorder(root):
+            if(root == None):
+                return
+            if(root.left):
+                inorder(root.left)
+            l.append(root.val)
+
+            if(root.right):
+                inorder(root.right)
+        inorder(root)
+        return l
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# 27 x
+
+'''
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        return self.dfs(root, root)
+
+    # self.何とかにする場合は，関数定義を別に書く？
+    def dfs(self, left, right):
+        if(left and right):
+            return left.val == right.val and self.dfs(left.left, right.right) and self.dfs(left.right, right.left)
+        else:
+            return left == right
+'''
+
+# 28 x
+
+'''
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        pre = cur = 0
+        for i in nums:
+            pre, cur = cur, max(pre+i, cur)
+        return cur
+'''
+# 29
+# 30.
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        cnt = 0
+        first = 0
+        list_first = []
+        list_cp = []
+        while head:
+            list_first.append(head.val)
+            list_cp.append(head.val)
+            head = head.next
+        list_cp = list_cp.reverse()
+        print(list_cp)
+        print(list_first)
+        if(list_cp == list_first):
+            return True
+        else:
+            return False
